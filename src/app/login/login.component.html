@@ -1,0 +1,25 @@
+<div class="login">
+    <div class="container">
+        <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)" class="form p-4"
+        >
+            <div class="form-outline mb-2 p-3">
+                <label class="form-label" for="form6Example1">User</label>
+                <input type="text" formControlName="username" name="username" id="form6Example1" class="form-control" />
+                
+                <span class="text-danger" *ngIf="loginForm.get('user')?.hasError('required') && (loginForm.get('user')?.dirty || loginForm.get('user')?.touched)">This field is required</span>
+                <span class="text-danger" *ngIf="loginForm.get('user')?.hasError('pattern') && (loginForm.get('user')?.dirty || loginForm.get('user')?.touched)">Should not contain number </span>
+            </div>
+
+            <div class="form-outline mb-2 p-3">
+                <label class="form-label" for="form6Example2">Password</label>
+              <input type="password" formControlName="password" name="password" id="form6Example2" class="form-control" />
+              <span class="getError" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">This field is required</span>
+            </div>
+
+            <div class="button text-center">
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary m-1 p-2 btn-block mb-4">Login</button>
+            </div>
+        </form>
+    </div>
+</div>

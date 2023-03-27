@@ -1,0 +1,26 @@
+@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/mixins.scss';
+@import '../../assets/scss/base.scss';
+@import '/node_modules/bootstrap/scss/bootstrap.scss';
+
+.empprofile{
+    padding: 12em;
+    background: url('../../assets/images/pexels-photo-2377965.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(10px);
+
+    img{
+        border-radius: 7em;
+    }
+}
+.detail{
+    padding: 5em;
+    .card-title{
+        color: steelblue;
+    }
+    p{
+        font-size: 2em;
+        font-weight: bold;
+    }
+}

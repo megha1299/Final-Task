@@ -1,0 +1,13 @@
+@mixin d-flex{
+    display: flex;
+}
+@mixin tablet{
+    @media (max-width:991px){
+        @content;
+    }
+}
+@mixin mobile{
+    @media (max-width:767px){
+        @content;
+    }
+}

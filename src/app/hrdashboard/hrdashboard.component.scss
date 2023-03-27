@@ -1,0 +1,41 @@
+@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/mixins.scss';
+@import '../../assets/scss/base.scss';
+@import '/node_modules/bootstrap/scss/bootstrap.scss';
+
+.HR{
+    padding: 14em 0; 
+    // background: lavender;
+    background-size: cover;
+    width: 100%;
+    
+    .todo{
+        input[type=text]{
+            border: 1px solid grey;
+        }
+        .btn{
+            border-radius: 4em;
+        }
+    }
+    
+}
+
+@mixin tablet {
+    @media (max-width:991px) {
+        .HR {
+            background-size: 100%;
+        }
+    }
+}
+
+@mixin mobile {
+    @media (max-width:767px) {
+        .HR {
+            padding: 5px;
+            width: auto;
+            
+        }
+
+        
+    }
+}

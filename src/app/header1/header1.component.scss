@@ -1,0 +1,9 @@
+@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/mixins.scss';
+@import '../../assets/scss/base.scss';
+@import '/node_modules/bootstrap/scss/bootstrap.scss';
+
+.nav-link{
+    font-size: 1.5em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

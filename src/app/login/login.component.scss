@@ -1,0 +1,71 @@
+@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/mixins.scss';
+@import '../../assets/scss/base.scss';
+
+.login {
+    background: url('../../assets/images/dddepth-048.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 22.35em 0;
+
+
+    form {
+        width: 33em;
+        height: 25em;
+        padding: 8em;
+        margin: 5px auto;
+        backdrop-filter: blur(8em);
+        border-radius: 8px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        border: 1px solid #000;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 5px 0;
+    }
+
+    .btn {
+        &:hover {
+            color: red;
+        }
+    }
+
+    input.ng-invalid.ng-touched {
+        border: 1px solid red;
+    }
+
+    .getError {
+        color: red;
+    }
+}
+
+@mixin tablet {
+    @media (max-width:991px) {
+        .login {
+            background-size: 100%;
+        }
+    }
+}
+
+@mixin mobile {
+    @media (max-width:767px) {
+        .login {
+            padding: 5px;
+            background-size: 100%;
+            img{
+                width: 100%;
+                height: auto;
+            }
+            form.form.p-2.ng-untouched.ng-pristine.ng-invalid {
+                width: 10em;
+                height: auto;
+            }
+        }
+
+        
+    }
+}

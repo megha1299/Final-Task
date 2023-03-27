@@ -1,0 +1,209 @@
+
+
+<app-header2></app-header2>
+
+<section class="empprofile">
+
+  <div class="container">
+
+
+    <!-- employee profile -->
+    
+      <div class="row " *ngFor="let list of user" >
+        <div class="col" *ngIf="list.id == 1001">
+          <img  [src]="list.image" alt="img" width="200" height="190">
+        </div>
+        <div class="col" *ngIf="list.id == 1001">
+          <h1>Laura Jacob</h1>
+          <h3>FrontEnd Developer</h3>
+        </div>
+      </div>
+   
+    
+
+  </div>
+
+</section>
+
+<section class="detail">
+<div class="container">
+  <div class="card  mt-3" >
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">About</a>
+        </li>
+      </ul>
+    </div>
+
+    <div *ngFor="let list of user">
+    <div class="card-body" *ngIf="list.id == 1001" >
+      <h2 class="card-title">Personal Details</h2>
+     <div class="row mt-3">
+      <div class="col">Name
+        <p class="p">{{list.name}}</p>
+      </div>
+      <div class="col">Phone
+        <p class="p">{{list.mobile}}</p>
+      </div>
+     </div>
+     <div class="row mt-3">
+       <div class="col">Age
+         <p class="p">{{list.age}}</p>
+       </div>
+      <div class="col">Email
+        <p class="p">{{list.email}}</p>
+      </div>
+     </div>
+     <div class="row mt-3">
+      <div class="col">Bloodgroup
+        <p class="p">{{list.bloodgroup}}</p>
+      </div>
+      <div class="col">Gender
+        <p class="p">{{list.gender}}</p>
+      </div>
+     </div>
+     <div class="row mt-3">
+      <div class="col">Date of Birth
+        <p class="p">{{list.dob}}</p>
+      </div>
+      
+     </div>
+    </div>
+  </div>
+  </div>
+
+
+   <!-- Add employee button -->
+
+   <div class="button text-center mb-4">
+    <button type="button" data-bs-toggle="modal" (click)="edit(user)"  data-bs-target="#exampleModal" class="btn btn-success">Edit</button>
+  </div>
+
+ <!-- Modal -->
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="overflow-y: initial;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style="height: 80vh; overflow-y: auto;">
+        <form [formGroup]="formValue">
+
+          <!-- userid input -->
+          <div class="form-outline mb-4">
+            <label for="d-inline-block">User Id</label>
+            <input type="number" class="form-control" formControlName="id" id="form4Example1"  />
+            <span class="text-danger" *ngIf="formValue.get('id')?.hasError('required') && (formValue.get('id')?.dirty || formValue.get('id')?.touched)">This field is required</span>
+
+          </div>
+
+          <!-- image input -->
+          <div class="form-outline mb-4">
+            <label for="d-inline-block">Profile</label>
+            <input type="file" class="form-control" formControlName="image" id="form4Example2" #fileInput />
+          </div>
+
+          <!-- Name input -->
+          <div class="form-outline mb-4">
+            <label for="d-inline-block">Name</label>
+            <input type="text" id="form4Example3" formControlName="name" class="form-control"  />
+            <span class="text-danger" *ngIf="formValue.get('name')?.hasError('required') && (formValue.get('name')?.dirty || formValue.get('name')?.touched)">This field is required</span>
+            <span class="text-danger" *ngIf="formValue.get('name')?.hasError('pattern') && (formValue.get('name')?.dirty || formValue.get('name')?.touched)">Should not contain number </span>
+          </div>
+
+          <!-- Age input -->
+          <div class="form-outline mb-4">
+            <label for="d-inline-block">Age</label>
+            <input type="number" class="form-control" formControlName="age" id="form4Example4"  />
+            <span class="text-danger" *ngIf="formValue.get('age')?.hasError('required') && (formValue.get('age')?.dirty || formValue.get('age')?.touched)">This field is required</span>
+
+          </div>
+
+          <!-- DOB input -->
+          <div class="form-outline mb-4">
+            <label for="d-inline-block"> Date of Birth</label>
+            <input type="date" id="form4Example5" formControlName="dob" class="form-control"  />
+            <span class="text-danger" *ngIf="formValue.get('dob')?.hasError('required') && (formValue.get('dob')?.dirty || formValue.get('dob')?.touched)">This field is required</span>
+
+          </div>
+
+          <!-- Blood Group input -->
+          <div class="form-outline mb-4">
+            <label for="d-inline-block">Blood group</label>
+            <input type="text" id="form4Example6" formControlName="bloodgroup" class="form-control"  />
+            <span class="text-danger" *ngIf="formValue.get('bloodgroup')?.hasError('required') && (formValue.get('bloodgroup')?.dirty || formValue.get('bloodgroup')?.touched)">This field is required</span>
+
+          </div>
+
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label for="d-inline-block">Email</label>
+            <input type="email" id="form4Example7" formControlName="email" class="form-control"  />
+            <span class="text-danger" *ngIf="formValue.get('email')?.hasError('required') && (formValue.get('email')?.dirty || formValue.get('email')?.touched)">This field is required</span>
+                <span class="text-danger" *ngIf="formValue.get('email')?.hasError('pattern') && (formValue.get('email')?.dirty || formValue.get('email')?.touched)">Should have uppercase,lowercase, number, symbol, minimum 17 characters </span>
+          </div>
+
+          <!-- Gender input -->
+          <div class="form-outline mb-4">
+            <label for="d-inline-block ">Gender</label>
+            
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="gender" name="gender" id="inlineRadio1"
+                value="Male" />
+              <label class="form-check-label" for="inlineRadio1">Male</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="gender" name="gender" id="inlineRadio2"
+                value="Female" />
+              <label class="form-check-label" for="inlineRadio2">Female</label>
+            </div>
+          </div>
+        
+          <!-- Mobile input -->
+          <div class="form-outline mb-4">
+            <label for="d-inline-block">Mobile Number</label>
+            <input type="number" id="form4Example9" formControlName="mobile" class="form-control"  />
+            <span class="text-danger" *ngIf="formValue.get('mobile')?.hasError('required') && (formValue.get('mobile')?.dirty || formValue.get('mobile')?.touched)">This field is required</span>
+
+          </div>
+
+          <!-- Salary input -->
+          <div class="form-outline mb-4">
+            <label for="d-inline-block">Salary</label>
+            <input type="number" id="form4Example10" formControlName="salary" class="form-control"  />
+            <span class="text-danger" *ngIf="formValue.get('salary')?.hasError('required') && (formValue.get('salary')?.dirty || formValue.get('salary')?.touched)">This field is required</span>
+
+          </div>
+
+          <!-- Designation input -->
+          <div class="form-outline mb-4">
+            <label for="d-inline-block">Designation</label>
+            <input type="text" id="form4Examplee" formControlName="designation" class="form-control"  />
+          </div>
+
+          <!-- Leave input -->
+          <div class="form-outline mb-4">
+            <label for="d-inline-block">Leave Status</label>
+            <input type="text" id="form4Examplee" formControlName="leave" class="form-control"  />
+          </div>
+
+        </form>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        
+        <button type="button"  class="btn btn-primary"  >update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</section>
+
+<app-footer></app-footer>

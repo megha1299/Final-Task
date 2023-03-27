@@ -1,0 +1,229 @@
+
+  <app-header1></app-header1>
+
+
+<div class="HR" >
+
+<div class="container">
+
+  <div class="doughnut"  style="padding: 0 8em;">
+    <div class="card" style="width: 45rem;">
+      <div class="card-body">
+        <h1 class="head">Total Active and Inactive Employees</h1>
+        <canvas id="myChart1"></canvas>
+
+      </div>
+    </div>  
+
+</div>
+
+
+  <div class="row">
+    
+      <div class="col-lg-3" style="width: 30em; height: 15em; margin: 4em ;">
+
+        <div class="card w-200">
+          <div class="card-body">
+            <h2 class="head text-center">Productive Hours</h2>
+             <canvas id="myChart2"></canvas>
+          </div>
+        </div>
+
+    </div>
+   
+      <div class="col-lg-3" style="width: 30em; height: 15em; margin: 4em;">
+
+        <div class="card w-200">
+          <div class="card-body">
+            <h2 class="head text-center">Total Leaves</h2>
+            <canvas id="myChart3"></canvas>
+          </div>
+        </div>
+
+      </div>
+    
+  </div>
+
+
+<!-- table -->
+<div class="emplist mt-3" >
+
+  <div class="row">
+  <div class="col-lg-3">
+<div class="card">
+  <div class="card-body">
+    <h2 class="head text-center"> List of Employees</h2>
+
+    <table class="table table-hover p-2">
+      <thead>
+        <tr>
+          <th scope="col">User Id</th>
+          <th scope="col">Image</th>
+          <th scope="col">Name</th>
+          <th scope="col">DOB</th>
+          <th scope="col">Email</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Mobile</th>
+          <th scope="col">Designation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let list of user">
+        <th scope="row">{{list.id}}</th>
+        <td><img  [src]="list.image" alt="img" style="width: 3em; border-radius: 12em;"></td>
+        <td>{{list.name}}</td>
+        <td>{{list.dob}}</td>
+        <td>{{list.email}}</td>
+        <td>{{list.gender}}</td>
+        <td>{{list.mobile}}</td>
+        <td>{{list.designation}}</td>
+        
+      </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+  </div>
+
+  
+</div>
+  
+
+</div>
+
+<!-- todo-->
+<div class="todo mt-3">
+
+  <div class="row" >
+    
+    <div class="card mx-2" style="width: 25rem;">
+      <div class="card-body">
+
+        <h2>Todo list</h2>
+
+        <div class="task">
+          <ul class="list" *ngFor="let data of todo">
+            <li class="list">
+              {{data.task}}
+            <button (click)="remove(data.id)" class="btn btn-success mx-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+              </svg>
+            </button>
+          </li>
+          </ul>
+          <hr>
+          <ul class="data" *ngFor="let item of list" >
+           
+            <li class="list">
+              {{item.name}}  
+              <button (click)="remove(item.id)" class="btn btn-success mx-5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                  <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                </svg>
+              </button>
+            </li>
+          </ul>
+
+          <input type="text" placeholder="Enter task" #task>
+          <button class="btn-primary mx-2" (click)="addTask(task.value)">Add</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Interview Status -->
+    <div class="card" style="width: 55rem;">
+      <div class="card-body">
+        <h2>Interview Status</h2>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">SI.No</th>
+              <th scope="col">Candidate</th>
+              <th scope="col">Position</th>
+              <th scope="col">Status</th>
+              <th scope="col">Interviewer</th>
+              <th scope="col">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let list of interview" style="font-size: 1.5em; padding: 12px;">
+            <th scope="row">{{list.id}}</th>
+            <td>{{list.name}}</td>
+            <td>{{list.position}}</td>
+            <td><mark style="background: #41a2e2; border-radius: 5px; ;">{{list.Status}}</mark></td>
+            <td>{{list.interviewer}}</td>
+            <td>{{list.notes}}</td>
+          </tr>
+          
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+    
+  </div>
+
+</div>
+
+<div class="leavelist mt-3">
+
+  <div class="card" >
+    <div class="card-body">
+      <h2>Leave Application</h2>
+      <table class="table table-hover" >
+        <thead >
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Leave type</th>
+            <th scope="col">Day type</th>
+            <th scope="col">Start date</th>
+            <th scope="col">End date</th>
+            <th scope="col">Reason</th>
+            <th scope="col">No. of days</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let list of leave" style="font-size: 1.3em;" >
+          <th scope="row">{{list.name}}</th>
+          <td>{{list.type}}</td>
+          <td>{{list.day}}</td>
+          <td>{{list.start}}</td>
+          <td>{{list.end}}</td>
+          <td>{{list.reason}}</td>
+          <td>{{list.count}}</td>
+          <td>{{list.stat}}</td>
+          <td>
+            <button class="btn btn-success ">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+              </svg>
+            </button>
+            <button class="btn btn-danger">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+              </svg>
+            </button>
+          </td>
+        </tr>
+        
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+</div>
+
+</div>
+    
+    
+</div>
+
+
+<app-footer></app-footer>

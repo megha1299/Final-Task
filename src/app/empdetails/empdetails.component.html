@@ -1,0 +1,191 @@
+
+<app-header1></app-header1>
+
+
+<div class="empdetails" style="padding: 12em;">
+  <div class="container ">
+    <div class="search p-3">
+    
+        <input class="form-control me-2" [(ngModel)]="searchData" type="search" placeholder="Search" aria-label="Search">
+      
+    </div>
+
+    <div class="row">
+      <div class="col d-flex" style="flex-wrap: wrap;">
+        <div class="card m-3" style="width: 25em;" *ngFor="let list of users |search: searchData">
+          <div class="card-body ">
+            <div class="card-header">
+              <div class="row">
+                <img  [src]="list.image" alt="img" style="border-radius: 15em; width: 9em; height: 8.6em;">
+              <div class="col">
+                <h2 class="head" style="color:rgb(69, 162, 216);"> {{list.name}}</h2>
+                <h4> {{list.designation | uppercase}}</h4>
+              </div>
+              </div>
+              
+              
+            </div>
+            
+  
+            <div class="col"><strong>Id: </strong>{{list.id}}</div>
+              <div class="col"><strong>Age: </strong>{{list.age}}</div>
+              <div class="col"><strong>DOB: </strong>{{list.dob}}</div>
+            
+            
+              <div class="col"><strong>Blood Group: </strong> {{list.bloodgroup}}</div>
+              <div class="col"><strong>Email: </strong> {{list.email}}</div>
+            
+            
+              <div class="col"> <strong>Gender: </strong>{{list.gender}}</div>
+              <div class="col"> <strong>Mobile: </strong>{{list.mobile}}</div>
+            
+            
+              <div class="col"><strong>Salary: </strong>{{list.salary}}</div>
+              <div class="col"><strong>Leave: </strong>{{list.leave}}</div>
+            <div class="row text-center">
+              <div class="col">
+                <button (click)="edit(list)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info" >Edit</button>
+              </div>
+              
+              <div class="col">
+                <button (click)="deleteDetails(list)" class="btn btn-danger">Delete</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+    </div> 
+
+
+    
+
+    <!-- Add employee button -->
+
+    <div class="button text-center">
+      <button type="submit" data-bs-toggle="modal" (click)="addEmp()"  data-bs-target="#exampleModal" class="btn btn-success">Add
+        Employee</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" style="overflow-y: initial;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" style="height: 80vh; overflow-y: auto;">
+            <form [formGroup]="formDetail"  >
+
+              <!-- userid input -->
+              <div class="form-outline mb-4">
+                <label for="d-inline-block">User Id</label>
+                <input type="number" class="form-control" formControlName="id" id="form4Example1"  />
+                <span class="text-danger" *ngIf="formDetail.get('id')?.hasError('required') && (formDetail.get('id')?.dirty || formDetail.get('id')?.touched)">This field is required</span>
+              </div>
+
+              <!-- image input -->
+              <div class="form-outline mb-4">
+                <label for="d-inline-block">Profile</label>
+                <input type="file" class="form-control" formControlName="image" id="form4Example2" #fileInput />
+              </div>
+
+              <!-- Name input -->
+              <div class="form-outline mb-4">
+                <label for="d-inline-block">Name</label>
+                <input type="text" id="form4Example3" formControlName="name" class="form-control"  />
+                <span class="text-danger" *ngIf="formDetail.get('name')?.hasError('required') && (formDetail.get('name')?.dirty || formDetail.get('name')?.touched)">This field is required</span>
+                <span class="text-danger" *ngIf="formDetail.get('name')?.hasError('pattern') && (formDetail.get('name')?.dirty || formDetail.get('name')?.touched)">Should not contain number </span>
+              </div>
+
+              <!-- Age input -->
+              <div class="form-outline mb-4">
+                <label for="d-inline-block">Age</label>
+                <input type="number" class="form-control" formControlName="age" id="form4Example4"  />
+                <span class="text-danger" *ngIf="formDetail.get('age')?.hasError('required') && (formDetail.get('age')?.dirty || formDetail.get('age')?.touched)">This field is required</span>
+              </div>
+
+              <!-- DOB input -->
+              <div class="form-outline mb-4">
+                <label for="d-inline-block"> Date of Birth</label>
+                <input type="date" id="form4Example5" formControlName="dob" class="form-control"  />
+                <span class="text-danger" *ngIf="formDetail.get('dob')?.hasError('required') && (formDetail.get('dob')?.dirty || formDetail.get('dob')?.touched)">This field is required</span>
+              </div>
+
+              <!-- Blood Group input -->
+              <div class="form-outline mb-4">
+                <label for="d-inline-block">Blood group</label>
+                <input type="text" id="form4Example6" formControlName="bloodgroup" class="form-control"  />
+                <span class="text-danger" *ngIf="formDetail.get('bloodgroup')?.hasError('required') && (formDetail.get('bloodgroup')?.dirty || formDetail.get('bloodgroup')?.touched)">This field is required</span>
+              </div>
+
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <label for="d-inline-block">Email</label>
+                <input type="email" id="form4Example7" formControlName="email" class="form-control"  />
+                <span class="text-danger" *ngIf="formDetail.get('email')?.hasError('required') && (formDetail.get('email')?.dirty || formDetail.get('email')?.touched)">This field is required</span>
+                <span class="text-danger" *ngIf="formDetail.get('email')?.hasError('pattern') && (formDetail.get('email')?.dirty || formDetail.get('email')?.touched)">Should have uppercase,lowercase, number, symbol, minimum 17 characters </span>
+              </div>
+
+              <!-- Gender input -->
+              <div class="form-outline mb-4">
+                <label for="d-inline-block ">Gender</label>
+                
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" formControlName="gender" name="gender" id="inlineRadio1"
+                    value="Male" />
+                  <label class="form-check-label" for="inlineRadio1">Male</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" formControlName="gender" name="gender" id="inlineRadio2"
+                    value="Female" />
+                  <label class="form-check-label" for="inlineRadio2">Female</label>
+                </div>
+              </div>
+            
+              <!-- Mobile input -->
+              <div class="form-outline mb-4">
+                <label for="d-inline-block">Mobile Number</label>
+                <input type="number" id="form4Example9" formControlName="mobile" class="form-control"  />
+                <span class="text-danger" *ngIf="formDetail.get('mobile')?.hasError('required') && (formDetail.get('mobile')?.dirty || formDetail.get('mobile')?.touched)">This field is required</span>
+              </div>
+
+              <!-- Salary input -->
+              <div class="form-outline mb-4">
+                <label for="d-inline-block">Salary</label>
+                <input type="number" id="form4Example10" formControlName="salary" class="form-control"  />
+                <span class="text-danger" *ngIf="formDetail.get('salary')?.hasError('required') && (formDetail.get('salary')?.dirty || formDetail.get('salary')?.touched)">This field is required</span>
+              </div>
+
+              <!-- Designation input -->
+              <div class="form-outline mb-4">
+                <label for="d-inline-block">Designation</label>
+                <input type="text" id="form4Examplee" formControlName="designation" class="form-control"  />
+                <span class="text-danger" *ngIf="formDetail.get('designation')?.hasError('required') && (formDetail.get('designation')?.dirty || formDetail.get('designation')?.touched)">This field is required</span>
+              </div>
+
+              <!-- Leave input -->
+              <div class="form-outline mb-4">
+                <label for="d-inline-block">Leave Status</label>
+                <input type="text" id="form4Examplee" formControlName="leave" class="form-control"  />
+              </div>
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            
+              <button type="button" *ngIf="displayEdit"  class="btn btn-success" (click)="update(users)">Update</button>
+
+            <button type="button" *ngIf="displayAdd" class="btn btn-primary" (click)="addEmp()">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

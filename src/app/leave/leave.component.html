@@ -1,0 +1,86 @@
+<app-header2></app-header2>
+
+<div class="leave">
+
+  <div class="container text-center">
+
+    <h1>Apply For Leave</h1>
+
+
+    <div class="leaveform mt-3">
+
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="leaveform">
+            <div class="row my-3">
+              <!-- leave type -->
+              <div class="col">
+                <label for=""><strong>Leave type</strong></label>
+                <div class="form-check form-check-inline mx-2">
+                  <input class="form-check-input" type="radio" formControlName="radioOptions" name="radioOptions" id="inlineRadio1"
+                    value="sick leave">
+                  <label class="form-check-label" for="inlineRadio1">Sick leave</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" formControlName="radioOptions" name="radioOptions" id="inlineRadio2"
+                    value="annual leave">
+                  <label class="form-check-label" for="inlineRadio2">Annual Leave</label>
+                </div>
+              </div>
+              <!-- day type -->
+              <div class="col">
+                <label for=""><strong>Day type</strong> </label>
+                <div class="form-check form-check-inline mx-2">
+                  <input class="form-check-input" type="checkbox" formControlName="checkbox" id="inlineCheckbox1" value="full day">
+                  <label class="form-check-label" for="inlineCheckbox1">Full Day</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" formControlName="checkbox" id="inlineCheckbox2" value="half day">
+                  <label class="form-check-label" for="inlineCheckbox2">Half Day</label>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="row my-3">
+              <!-- start date -->
+              <div class="col">
+                <div class="date form">
+                  <label>Start Date</label>
+                  <input type="date" formControlName="startdate" class="form-date mx-2" name="startdate" id="date">
+                </div>
+              </div>
+              <!-- end date -->
+              <div class="col">
+                <div class="date form">
+                  <label>End Date</label>
+                  <input type="date" class="form-date mx-2" formControlName="enddate" name="enddate" id="date">
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Message input -->
+            
+            <div class="row my-3">
+              <label>Reason</label>
+              <textarea class="form-control" formControlName="reason" id="form4Example3" rows="4"></textarea>
+              <span class="text-danger" *ngIf="leaveform.get('reason')?.hasError('required') && (leaveform.get('reason')?.dirty || leaveform.get('reason')?.touched)">This field is required</span>
+            </div>
+
+            <!-- Button -->
+            <div class="button">
+              <button type="submit" (click)="apply(leaveform)" class="btn-primary text-center">Apply</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
+
+<app-footer></app-footer>

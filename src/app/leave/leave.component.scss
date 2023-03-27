@@ -1,0 +1,22 @@
+@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/mixins.scss';
+@import '../../assets/scss/base.scss';
+@import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+
+.leave{
+    padding: 16.5em 0;
+    background-color: #e6fbf1;
+    form{
+        padding: 5em;
+        border-radius: 3em;
+    }
+    input[type=date]{
+        padding: 5px;
+        border: 1px solid grey;
+    }
+    .btn-primary{
+        padding: 5px;
+        border-radius: 5px;
+    }
+}
